@@ -4,7 +4,7 @@ resolution: 0.025
 
 plugins:
  - {name: obstacles, type: "costmap_2d::FetchDepthLayer"}
- - {name: inflater,  type: "costmap_2d::InflationLayer"}
+ - {name: local_costmap,  type: "costmap_2d::InflationLayer"}
 
 obstacles:
   publish_observations: false

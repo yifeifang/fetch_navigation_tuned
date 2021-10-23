@@ -1,17 +1,17 @@
 <launch>
-
+  <!-- <remap from="/odom" to="/camera/odom/sample"/> -->
   <!-- Navigation requires at least one map.
        In addition, it is sometimes desirable to have a "keepout" map
        which is used for costmaps, but not localization -->
   <arg name="map_file" default="$(find fetch_maps)/maps/3_1_16_localization.yaml" />
-  <arg name="map_keepout_file" default="$(find fetch_maps)/maps/3_1_16_keepout.yaml" />
+  <arg name="map_keepout_file" default="/home/dewey/517project/map/GIX_phy_keepout.yaml" />
   <arg name="use_keepout" default="false" />
   <arg name="launch_map_server" default="true" />
   <arg name="use_map_topic"  default="false" />
 
   <!-- Navigation parameter files -->
   <arg name="move_base_include" default="$(find fetch_navigation)/launch/include/move_base.launch.xml" />
-  <arg name="amcl_include" default="$(find fetch_navigation)/launch/include/amcl.launch.xml" />
+  <!-- <arg name="amcl_include" default="$(find fetch_navigation)/launch/include/amcl.launch.xml" /> -->
 
   <!-- set topics -->
   <arg name="scan_topic" default="base_scan" />
@@ -33,11 +33,11 @@
   </group>
 
   <!-- localize the robot -->
-  <include file="$(arg amcl_include)" >
+  <!-- <include file="$(arg amcl_include)" >
     <arg name="scan_topic" value="$(arg scan_topic)" />
     <arg name="map_topic" value="$(arg map_topic)" />
     <arg name="use_map_topic" value="$(arg use_map_topic)" />
-  </include>
+  </include> -->
 
   <!-- move the robot -->
   <include file="$(arg move_base_include)" >
@@ -49,6 +49,6 @@
   </include>
 
   <!-- tilt the head -->
-  <node pkg="fetch_navigation" type="tilt_head.py" name="tilt_head_node" />
+  <!-- <node pkg="fetch_navigation" type="tilt_head.py" name="tilt_head_node" /> -->
 
 </launch>
